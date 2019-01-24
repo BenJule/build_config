@@ -314,5 +314,11 @@ node('master') {
                   echo 'Will not publish anything because PUBLISH_BUILD=false'
             }
         }
+        cleanUp()
+        currentBuild.result = 'SUCCESS'
+     } catch (Exception e) {
+        try { cleanUp() } catch (Exception ex) { }
+        currentBuild.result = 'FAILURE'
     }
+    echo "RESULT: ${currentBuild.result}"
 }
