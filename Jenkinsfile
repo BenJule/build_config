@@ -315,12 +315,4 @@ node('master') {
             }
         }
         cleanUp()
-        currentBuild.result = 'SUCCESS'
-        slackSend (color: 'good', message: "Jenkins Builder - Job SUCCESS: '${env.JOB_NAME} [${env.BUILD_NUMBER} - ${currentBuild.description}]' (${env.BUILD_URL})")
-    } catch (Exception e) {
-        try { cleanUp() } catch (Exception ex) { }
-        currentBuild.result = 'FAILURE'
-        slackSend (color: 'danger', message: "Jenkins Builder - Job FAILED: '${env.JOB_NAME} [${env.BUILD_NUMBER} - ${currentBuild.description}]' (${env.BUILD_URL})")
-    }
-    echo "RESULT: ${currentBuild.result}"
 }
