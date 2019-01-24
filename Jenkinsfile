@@ -314,6 +314,5 @@ node('master') {
                   echo 'Will not publish anything because PUBLISH_BUILD=false'
             }
         }
-        cleanUp()
     }
 }
